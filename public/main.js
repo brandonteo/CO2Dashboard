@@ -36,8 +36,13 @@ d3.queue()
     placeMap(width, width * 4 / 5);
     updateMap(geoData, data, currentYear, currentDataType);
 
+    // Attach piechart onto SVG canvas and update the piechart with data based on current input
     placePie(width, height);
     updatePie(data, currentYear);
+
+    // Attach barchart onto SVG canvas and update the piechart
+    placeBar(width, height);
+    updateBar(data, currentDataType, "");
 
     // Attach input listener onto slider
     d3.select("#year")
@@ -45,16 +50,19 @@ d3.queue()
         .property("max", extremeYears[1])
         .property("value", currentYear)
         .on("input", function() {
-            // On sliding, call `updateMap` with `currentYear`
+            // On sliding, call update SVG elements
             currentYear = Number(d3.event.target.value);
             updateMap(geoData, data, currentYear, currentDataType);
             updatePie(data, currentYear);
+            highlightBars(currentYear);
         });
 
     // Attach change listener onto radio button selector
     d3.selectAll('input[name="data-type"]')
         .on("change", function() {
-          currentDataType = d3.event.target.value;
-          updateMap(geoData, data, currentYear, currentDataType);
+            // On radio button change, only update map and bars
+            currentDataType = d3.event.target.value;
+            updateMap(geoData, data, currentYear, currentDataType);
+            updateBar(data, currentDataType, country);
         });
   });
