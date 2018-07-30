@@ -29,13 +29,15 @@ d3.queue()
     var geoData = topojson.feature(mapData, mapData.objects.countries).features;
 
     // Setup SVG canvas
-    var width = Number(d3.select(".chart-container")
-                         .node().offsetWidth);
+    var width = Number(d3.select(".chart-container").node().offsetWidth);
     var height = 300;
 
     // Attach map onto SVG canvas and update the map with data based on current input
     placeMap(width, width * 4 / 5);
     updateMap(geoData, data, currentYear, currentDataType);
+
+    placePie(width, height);
+    updatePie(data, currentYear);
 
     // Attach input listener onto slider
     d3.select("#year")
@@ -46,6 +48,7 @@ d3.queue()
             // On sliding, call `updateMap` with `currentYear`
             currentYear = Number(d3.event.target.value);
             updateMap(geoData, data, currentYear, currentDataType);
+            updatePie(data, currentYear);
         });
 
     // Attach change listener onto radio button selector

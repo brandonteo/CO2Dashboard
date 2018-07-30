@@ -57,27 +57,26 @@ function updateMap(geoData, climateData, year, dataType) {
     // Standard update pattern
     // Step 1
     var updates = map.selectAll(".country")
-                    .data(geoData);
+                     .data(geoData);
   
     // Step 2 - nothing to remove from `exit()`
           
     // Step 3
-    updates
-      .enter()
-      .append("path")
-        .classed("country", true)
-        .attr("d", path)
-      .merge(updates) // Step 4
-        .transition()
-        .duration(400)
-        .attr("fill", function(d) {
-          var val = d.properties[dataType];
-          return val ? mapColorScale(val) : "#ccc";
-        });
+    updates.enter()
+             .append("path")
+               .classed("country", true)
+               .attr("d", path)
+            .merge(updates) // Step 4
+              .transition()
+              .duration(400)
+              .attr("fill", function(d) {
+                  var val = d.properties[dataType];
+                  return val ? mapColorScale(val) : "#ccc";
+              });
   
     // Updates map title according to input `year`
     d3.select(".map-title")
-        .text("Carbon dioxide " + lower(dataType) + ", " + year);
+      .text("Carbon dioxide " + lower(dataType) + ", " + year);
 }
 
 // Helper function to change `str` into lowercase
