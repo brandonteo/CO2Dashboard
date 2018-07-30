@@ -66,6 +66,19 @@ function updateMap(geoData, climateData, year, dataType) {
              .append("path")
                .classed("country", true)
                .attr("d", path)
+               .on("click", function() { // Attach a click listener to listen for clicks so that barchart would work
+                  var currentDataType = d3.select("input:checked")
+                                          .property("value");
+                  var country = d3.select(this);
+                  var countryName = (country.classed("active")) ? "" : country.data()[0].properties.country;
+
+                  // Update and highlight barchart according to selected `country`
+                  updateBar(climateData, currentDataType, countryName);
+                  highlightBars(Number(d3.select("#year").property("value")));
+
+                  d3.selectAll(".country").classed("active", false);
+                  country.classed("active", !(country.classed("active")));
+               })
             .merge(updates) // Step 4
               .transition()
               .duration(400)

@@ -16,7 +16,7 @@ function placeBar(width, height) {
     bar.append("text")
         .attr("transform", "rotate(-90)")
         .attr("x", - height / 2)
-        .attr("dy", "1em")
+        .attr("dy", "2em")
         .style("text-anchor", "middle")
         .style("font-size", "1em")
         .classed("y-axis-label", true);
@@ -79,7 +79,6 @@ function updateBar(data, dataType, country) {
     // Setup barchart transitions
     var t = d3.transition()
               .duration(1000)
-              .ease(d3.easeBounceOut);
   
     // Standard update pattern
     // Step 1
@@ -89,7 +88,6 @@ function updateBar(data, dataType, country) {
     // Step 2
     updates.exit()
              .transition(t)
-             .delay(function(d, i, nodes) {return (nodes.length - i - 1) * 100;})
              .attr("y", height - padding.bottom)
              .attr("height", 0)
            .remove();
@@ -104,7 +102,6 @@ function updateBar(data, dataType, country) {
              .attr("x", function(d) {return (xScale(d.year) + xScale(d.year - 1)) / 2;})
              .attr("width", barWidth - barPadding)
              .transition(t)
-             .delay(function(d, i) {return i * 100;})
              .attr("y", function(d) {return yScale(d[dataType]);})
              .attr("height", function(d) {return height - padding.bottom - yScale(d[dataType]);});
 }
