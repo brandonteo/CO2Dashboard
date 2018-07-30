@@ -67,7 +67,7 @@ function updateBar(data, dataType, country) {
         .call(d3.axisLeft(yScale));
   
     // Set axis label based on selected radio buttons `dataType`
-    var axisLabel = (dataType === "emissions") ? "CO2 emissions, thousand metric tons" : "CO2 emissions, metric tons per capita";
+    var axisLabel = (dataType === "emissions") ? "CO2 emissions (thousand metric tons)" : "CO2 emissions (metric tons per capita)";
     d3.select(".y-axis-label")
       .text(axisLabel);
 
