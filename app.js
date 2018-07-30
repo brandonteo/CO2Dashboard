@@ -14,6 +14,6 @@ app.get('*', function(req, res) {
     res.redirect('/');
 });
 
-app.listen(PORT=3333, function(req, res) {
+app.listen(process.env.PORT, process.env.IP, function(req, res) {
     console.log("Server has started...");
 });
