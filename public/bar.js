@@ -72,7 +72,7 @@ function updateBar(data, dataType, country) {
       .text(axisLabel);
 
     // Set barchart title based on selected `country`
-    var barTitle = country ? "CO2 Emissions, " + country : "Click on a country to see annual trends.";
+    var barTitle = country ? "CO2 Emissions - " + country : "Click on a country to see annual trends.";
     d3.select(".bar-title")
       .text(barTitle);
   

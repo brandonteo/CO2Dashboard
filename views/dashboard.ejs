@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>CO2 Dashboard</title>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <div id="nav">
     <h2>CO<sub>2</sub> Dashboard</h2>
     <p>
-      Explore CO<sub>2</sub> emissions by year. 
-      Current year: <span id="year-val"></span>
-      <input id="year" type="range" step="1">
+      Explore CO<sub>2</sub> emissions by year : 
+      <span id="year-val"></span>
+      <input id="year" type="range" step="1" class="slider">
     </p>
     <p>
-      Choose between total emissions or emissions per capita.
-      <input type="radio" name="data-type" value="emissions" checked>
-      <label>Emissions</label>
-      <input type="radio" name="data-type" value="emissionsPerCapita">
-      <label>Emissions Per Capita</label>
+      Total emissions or Emissions per capita :
+      <span class="radio-group">
+        <input type="radio" name="data-type" value="emissions" class="radio" checked>
+        <label class="labels">Emissions</label>
+        <input type="radio" name="data-type" value="emissionsPerCapita" class="radio">
+        <label class="labels">Emissions Per Capita</label>
+      </span>
     </p>
-    <p>Click on a country to see its trends by year.</p>
+    <p style="padding-top: 10px;">Click on a country to see its trends by year.</p>
   </div>
   <section class="container">
     <div class="chart-container">

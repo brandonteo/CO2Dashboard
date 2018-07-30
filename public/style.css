@@ -1,6 +1,14 @@
 body {
     margin: 0;
     background: #edf3f5;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#nav {
+    background-color: #026092;
+    color: white;
+    padding: 15px;
+    text-align: center;
 }
   
 #nav p {
@@ -12,8 +20,25 @@ body {
   font-size: 1.5em;
 }
 
-#nav input {
+.labels {
+  vertical-align: 0px;
+}
+
+.slider {
   margin-left: 20px;
+  vertical-align: middle;
+}
+
+.radio-group {
+  margin-left: 8px;
+}
+
+.radio {
+  vertical-align: 1px;
+}
+
+#year-val {
+  margin-left: 18px;
 }
 
 .container {

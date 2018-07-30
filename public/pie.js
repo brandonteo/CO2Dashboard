@@ -74,7 +74,7 @@ function updatePie(data, currentYear) {
   
     // Update piechart title corr. to `currentYear`
     pie.select(".pie-title")
-        .text("Total emissions by continent and region, " + currentYear);
+        .text("Total emissions by continent and region - " + currentYear);
 }
   
   

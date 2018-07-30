@@ -102,7 +102,7 @@ d3.queue()
               var dataValue = (data[dataType]) ? data[dataType].toLocaleString() + " " + units : "Data Not Available";
               tooltip.html(`
                              <p>Country: ${data.country}</p>
-                             <p>${formatDataType(dataType)}: ${dataValue}</p>
+                             <p>Emissions: ${dataValue}</p>
                              <p>Year: ${data.year || d3.select("#year").property("value")}</p>
                              ${percentage}
                           `)
@@ -113,15 +113,10 @@ d3.queue()
       d3.selectAll("svg").on("mousemove touchmove", updateTooltip);
   });
 
-  
+
 // Calculate percentages using piechart arcs
 function getPercentage(d) {
     var angle = d.endAngle - d.startAngle;
     var fraction = 100 * angle / (Math.PI * 2);
     return fraction.toFixed(2) + "%";
-}
-
-// Formats input string so that first char is capitalized and everything else is lower case
-function formatDataType(key) {
-    return key[0].toUpperCase() + key.slice(1).replace(/[A-Z]/g, c => " " + c);
 }

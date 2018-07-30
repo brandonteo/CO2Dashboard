@@ -89,7 +89,7 @@ function updateMap(geoData, climateData, year, dataType) {
   
     // Updates map title according to input `year`
     d3.select(".map-title")
-      .text("Carbon dioxide " + lower(dataType) + ", " + year);
+      .text("Carbon dioxide " + lower(dataType) + " - " + year);
 }
 
 // Helper function to change `str` into lowercase
